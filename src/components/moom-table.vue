@@ -2,21 +2,19 @@
     <div class="ui container">
       <table class="ui celled table">
         <thead>
-          <th>Employee</th>
-          <th>Correct Guesses</th>
+          <th>Date</th>
+          <th>Event</th>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="new$ in news">
             <td>
               <h4 class="ui image header"></h4>
-                <div class="content">
-                  Mark
-                  <div class="sub header">Executive
-                </div>
+              <div class="content">
+              {{new$.date}}
               </div>
             </td>
             <td>
-              11
+              {{new$.info}}
             </td>
           </tr>
         </tbody>
@@ -25,11 +23,20 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'moom-table',
   data () {
     return {
+      news: []
     }
+  },
+  mounted () {
+    axios.get('http://localhost:3000/api/news')
+    .then(response => {
+      console.log(response)
+      this.news = response.data
+    })
   }
 }
 </script>
