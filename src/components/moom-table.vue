@@ -1,6 +1,7 @@
 <template>
-    <div class="ui container">
-      <table class="ui celled table">
+    <div style="overflow-x:auto;">
+      <h2>Actualities</h2>
+      <table>
         <thead>
           <th>Date</th>
           <th>Event</th>
@@ -8,8 +9,8 @@
         <tbody>
           <tr v-for="new$ in news">
             <td>
-              <h4 class="ui image header"></h4>
-              <div class="content">
+              <h4></h4>
+              <div>
               {{new$.date}}
               </div>
             </td>
@@ -42,5 +43,15 @@ export default {
 </script>
 
 <style lang="scss">
-    
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
 </style>
